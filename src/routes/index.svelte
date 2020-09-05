@@ -48,4 +48,7 @@
   <p>Push "Add Counter" to make counter.</p>
 {/if}
 <div><button on:click={addCounter}>Add Counter</button></div>
-<p>{sumOfCount}</p>
+
+<div>
+  <p>Sum of Count: {sumOfCount}</p>
+</div>
