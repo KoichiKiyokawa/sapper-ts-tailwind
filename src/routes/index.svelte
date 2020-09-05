@@ -2,6 +2,7 @@
   import Counter from "../components/Counter.svelte";
   import { sumBy } from "../utils/helper/lodash";
 
+
   const getDefaultCounter = () => ({
     count: 0,
     text: "new",
