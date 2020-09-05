@@ -1,3 +1,4 @@
+import alias from '@rollup/plugin-alias';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import commonjs from '@rollup/plugin-commonjs';
@@ -15,6 +16,11 @@ const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 const preprocess = autoPreprocess({ typescript: true, postcss: true })
 
+const aliases = alias({
+	resolve: ['.svelte', '.js', '.ts'],
+	entries: [{ find: '@', replacement: 'src' }]
+})
+
 const onwarn = (warning, onwarn) =>
 	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
 	(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
@@ -25,6 +31,7 @@ export default {
 		input: config.client.input(),
 		output: config.client.output(),
 		plugins: [
+			aliases,
 			replace({
 				'process.browser': true,
 				'process.env.NODE_ENV': JSON.stringify(mode)
@@ -72,6 +79,7 @@ export default {
 		input: config.server.input(),
 		output: config.server.output(),
 		plugins: [
+			aliases,
 			replace({
 				'process.browser': false,
 				'process.env.NODE_ENV': JSON.stringify(mode)
