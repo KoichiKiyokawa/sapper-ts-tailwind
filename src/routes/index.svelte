@@ -6,4 +6,7 @@
   <title>Sapper project template</title>
 </svelte:head>
 
-<h1>msg</h1>
+<template lang="pug">
+  h1 msg
+  h2 {msg}
+</template>
