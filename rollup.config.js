@@ -13,7 +13,7 @@ const mode = process.env.NODE_ENV;
 const prod = mode === 'production';
 const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
-const preprocess = autoPreprocess({ typescript: true })
+const preprocess = autoPreprocess({ typescript: true, postcss: true })
 
 const onwarn = (warning, onwarn) =>
 	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
