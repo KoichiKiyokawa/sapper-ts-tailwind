@@ -8,11 +8,11 @@
 
 <style lang="sass">
   .card
-    @apply flex justify-center border rounded shadow p-2 w-3/4 m-auto mt-1
+    @apply flex justify-center border rounded shadow p-2 mt-1
   input
     @apply shadow border rounded p-2
   span
-    @apply text-xl font-bold p-2
+    @apply text-xl font-bold p-2 w-24 text-center
   .btn
     @apply text-white rounded p-2 ml-1
     &.increment
