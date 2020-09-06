@@ -1,5 +1,6 @@
 <script lang="ts">
   import Counter from "../components/Counter.svelte";
+  import { sumBy } from "../utils/helper/lodash";
 
   const getDefaultCounter = () => ({
     count: 0,
@@ -15,13 +16,14 @@
       if (counters[index].count > 0) counters[index].count--;
     },
     drop() {
-      counters = counters.filter((_, i) => i !== index)
-    }
-  })
+      counters = counters.filter((_, i) => i !== index);
+    },
+  });
 
   const addCounter = () => {
     counters = [...counters, getDefaultCounter()];
   };
+  $: sumOfCount = sumBy(counters, 'count');
 </script>
 
 <svelte:head>
@@ -42,6 +44,7 @@
     on:drop={handler(i).drop} />
 {/each}
 {#if counters.length === 0}
-<p>Push "Add Counter" to make counter.</p>
+  <p>Push "Add Counter" to make counter.</p>
 {/if}
 <div><button on:click={addCounter}>Add Counter</button></div>
+<p>{sumOfCount}</p>

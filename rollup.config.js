@@ -82,6 +82,7 @@ export default {
 				dev,
 				preprocess
 			}),
+			typescript({ sourceMap: !prod }),
 			resolve({
 				dedupe: ['svelte']
 			}),
