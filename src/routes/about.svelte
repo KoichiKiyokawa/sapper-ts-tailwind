@@ -24,13 +24,16 @@
   ];
 </script>
 
+<style lang="sass">
+.btn
+	@apply rounded-full px-4 py-2 bg-blue-600 text-white outline-none
+	&:hover
+		@apply bg-blue-400
+</style>
+
 <svelte:head>
-  <title>About</title>
+  <title>Notification</title>
 </svelte:head>
 
-<h1>About this site</h1>
-
-<p>This is the 'about' page. There's not much here.</p>
-
-<button on:click={notifyAnimate}>notify!</button>
+<button on:click={notifyAnimate} class="btn">notify!</button>
 <NotifyList {notifications} />
